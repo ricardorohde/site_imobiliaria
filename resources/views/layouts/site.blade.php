@@ -15,28 +15,13 @@
 
 </head>
 <body id="app">
-    <nav>
-      <div class="nav-wrapper blue">
-        <div class="container">
-          <a href="#" class="brand-logo">SiteLaravel</a>
-          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-          <ul class="right hide-on-med-and-down">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Sobre</a></li>
-            <li><a href="#">Contato</a></li>
-            
-          </ul>
-          <ul class="side-nav" id="mobile-demo">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Sobre</a></li>
-            <li><a href="#">Contato</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <header>
+      @include('layouts._site._nav')
+    </header>
     <main class="py-4">
       @yield('content')
     </main>
+   @include('layouts._site._footer')
    <script src="{{asset('lib/jquery/dist/jquery.js')}}"></script>
    <script src="{{asset('lib/materialize/dist/js/materialize.js')}}"></script>
    <script src="{{asset('js/init.js')}}"></script>
