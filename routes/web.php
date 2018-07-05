@@ -11,10 +11,35 @@
 |
 */
 
-Route::get('/', function () {
-    return view('site.home');
+Route::get('/',['as' => 'site.home',function(){
+	return view('site.home');
+}]);
+
+Route::get('/sobre',['as' => 'site.sobre',function(){
+	return view('site.sobre');
+}]);
+
+Route::get('/contato',['as' => 'site.contato',function(){
+	return view('site.contato');
+}]);
+
+Route::get('/imovel/{id}/{titulo?}',['as' => 'site.imovel',function(){
+	return view('site.imovel');
+}]);
+
+
+//Auth::routes(); - Login automático
+Route::get('/admin/login',['as' => 'admin.login',function(){
+   return view('admin.login.index');
+}]);
+
+Route::post('/admin/login',['as' => 'admin.login','uses' => 'Admin\UsuarioController@login']);
+
+/* protegendo a rota para não entrar na principal semm logar */
+Route::group(['middleware'=>'auth'], function(){
+  Route::get('/admin',['as' => 'admin.principal',function(){
+   return view('admin.principal.index');
+  }]);
 });
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
