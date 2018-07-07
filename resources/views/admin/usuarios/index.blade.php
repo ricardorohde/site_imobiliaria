@@ -30,13 +30,16 @@
 		 	    <td>{{ $usuario->name}}</td>
 		 	    <td>{{ $usuario->email}}</td>
 		 	    <td>
-		 	    	<a href="#" class="btn orange">Editar</a>
-		 	    	<a href="#" class="btn red">Deletar</a>
+		 	    	<a href="{{route('admin.usuarios.editar',$usuario->id)}}" class="btn orange">Editar</a>
+		 	    	<a href="javascript: if(confirm('Deletar esse usuário?')){ window.location.href = '{{ route('admin.usuarios.excluir',$usuario->id)}}'}" class="btn red">Deletar</a>
 		 	    </td>
 		 	</tr>
 		 	@endforeach
 		 </tbody>
 		</table>
 	</div>
+	<div class="row">
+	   <a href="{{ route('admin.usuarios.adicionar')}}" class="btn blue" >Adicionar</a>
+    </div>
 </div>
 @endsection
